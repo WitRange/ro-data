@@ -35,8 +35,4 @@ $(function(){
         }
 
     });
-    $('ul.dropdown-submenu [data-toggle=dropdown]').on('click', function(event) {
-        // If a menu is already open we close it
-        //$('ul.dropdown-submenu [data-toggle=dropdown]').parent().removeClass('open');
-    });
 });
