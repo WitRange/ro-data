@@ -1,0 +1,168 @@
+<?php echo $this->doctype()."\n"; ?>
+<html lang="ru">
+    <head>
+        <?php echo $this->headMeta()."\n"; ?>
+        <?php echo $this->headTitle()."\n"; ?>
+        <?php echo $this->headLink()."\n"; ?>
+        <?php echo $this->headStyle()."\n"; ?>
+        <!--[if lt IE 9]>
+          <script src="/public/js/ie-fix/html5shiv.js"></script>
+          <script src="/public/js/ie-fix/respond.min.js"></script>
+        <![endif]-->
+        <?php echo $this->headScript()."\n"; ?>
+    </head>
+    <body role="document">
+        
+        
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Показать меню</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="icon icon-home icon-white"> </i> РО</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="menu-item "><a href="/world">Карта мира</a></li>
+                        <li class="menu-item dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Профессии <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="menu-item "><a href="?id=proffesion&type=mage&grage=novice">Новички</a></li>
+                                <li class="menu-item dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Волшебники</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=mage">1.1) Mage / Маг</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header"> - элементальщики</li>
+                                        <li><a href="?id=proffesion&type=mage&grage=sage">2.1) Sage / Мудрец</a></li>
+                                        <li><a href="?id=proffesion&type=mage&grage=professor">2.2) Professor / Профессор</a></li>
+                                        <li><a href="?id=proffesion&type=mage&grage=sorcerer">3.1) Sorcerer / Шаман</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">чародеи</li>
+                                        <li><a href="?id=proffesion&type=mage&grage=wizzard">2.1) Wizzard / Волшебник</a></li>
+                                        <li><a href="?id=proffesion&type=mage&grage=highwizzard">2.2) High Wizard / Архимаг</a></li>
+                                        <li><a href="?id=proffesion&type=mage&grage=warlock">3.1) Warlock / Колдуны</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item "><a href="?id=proffesion&type=acolyte">Лекари</a></li>
+                                <li class="menu-item "><a href="?id=proffesion&type=swordman">Мечники</a></li>
+                                <li class="menu-item "><a href="?id=proffesion&type=archer">Лучники</a></li>
+                                <li class="menu-item "><a href="?id=proffesion&type=thief">Преступники</a></li>
+                                <li class="menu-item "><a href="?id=proffesion&type=merchant">Ремесленники</a></li>
+                                <li class="menu-item "><a href="?id=proffesion&type=specialists">Специалисты</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Предметы <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="menu-item dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Экипировка</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-header">атакующие вещи</li>
+                                        <li class="menu-item "><a href="/?id=ammunition">Амуниция</a></li>
+                                        <li class="menu-item "><a href="/?id=weapon">Оружие</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">одежда</li>
+                                        <li class="menu-item "><a href="/?id=shields">Щиты</a></li>
+                                        <li class="menu-item "><a href="/?id=armor">Броня</a></li>
+                                        <li class="menu-item "><a href="/?id=garment">Накидки / Плащи</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">головные уборы</li>
+                                        <li class="menu-item "><a href="/?id=headgears&type=top">Верх лица</a></li>
+                                        <li class="menu-item "><a href="/?id=headgears&type=middle">Середина лица</a></li>
+                                        <li class="menu-item "><a href="/?id=headgears&type=bottom">Низ лица</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">модификаторы</li>
+                                        <li class="menu-item "><a href="/?id=accessories">Аксесуары</a></li>
+                                        <li class="menu-item "><a href="/?id=cards">Слотовые карты</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">комплекты</li>
+                                        <li class="menu-item "><a href="/?id=complect&type=wears">Комплекты одежды</a></li>
+                                        <li class="menu-item "><a href="/?id=complect&type=cards">Комплекты слотовых карт</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                
+                                <li class="menu-item "><a href="/?id=consumable">Снадобья / Еда</a></li>
+                                <li class="menu-item "><a href="/?id=refinement">Ресурсы</a></li>
+                                <li class="menu-item "><a href="/?id=loot">Трофеи</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Обитатели <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="menu-item "><a href="/?id=character">Персонажи</a></li>
+                                <li class="menu-item "><a href="/?id=monster">Монстры</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="navbar-search navbar-form" method="get" action="">
+                                <input class="form-control" placeholder="Search" name="s" type="text">
+                            </form>
+                        </li>
+                        <li>
+                            <a href="#" title="Subscribe to the RSS feed">
+                                <i class="icon-rss"> </i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container theme-showcase" role="main">
+            
+            <?php if ('index' == $this->controller): ?>
+            
+                <div class="jumbotron">
+                    <h1>Мир РО</h1>
+                    <p>Полезности мира упрощающие понимание развитие.</p>
+                </div>
+            
+            <?php else : ?>
+            
+                <?php if( ! empty($this->breadcrumb)) : ?>
+					<ul class="breadcrumb">
+						<?php 
+                            $index = 0;
+                            $last_crumb = count($this->breadcrumb) - 1;
+                        ?>
+						<?php foreach($this->breadcrumb as $href => $title) : ?>
+							<?php if(empty($index)): ?><!-- First crumb -->
+								<li> <a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><b><?php echo $title; ?></b></a></li>
+							<?php elseif($index < $last_crumb) : ?>
+								<li> <a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><?php echo $title; ?></a></li>
+							<?php else : ?>
+								<li class="active"><?php echo $title; ?></li>
+							<?php endif; ?>
+                            <?php $index++; ?>
+                        <?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+                
+            <?php endif; ?>
+            
+            <div class="page-header">
+                <h1><?php echo $this->title; ?></h1>
+            </div>
+            
+            <?php echo ($this->layout()->content)."\n"; ?>
+            
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted">Точка - это лишь начало троеточия.</p>
+            </div>
+        </div>
+        
+    </body>
+</html>
