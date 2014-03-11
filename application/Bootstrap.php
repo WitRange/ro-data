@@ -53,6 +53,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             
         
         $view->headTitle('RO Local');
+        $view->headTitle()->setSeparator(' - ');
         
         $view->headLink(array('rel' => 'favicon',
                               'href' => '/favicon.ico'),
