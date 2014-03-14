@@ -33,21 +33,27 @@
                         <li class="menu-item dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Герои <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li class="menu-item "><a href="?id=proffesion&type=mage&grage=novice">Новички</a></li>
+                                <li class="menu-item dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Новички</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=novice">0) Новичок</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=supernovice">1) Суперновичок</a></li>
+                                    </ul>
+                                </li>
                                 <li class="menu-item dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Волшебники</a>
                                     <ul class="dropdown-menu">
                                         <li class="menu-item"><a href="?id=proffesion&type=mage&grage=mage">1.1) Mage / Маг</a></li>
+                                        <li class="divider"></li>
                                         <li class="dropdown-header">колдуны</li>
-                                        <li><a href="?id=proffesion&type=mage&grage=wizzard">2.1) Wizzard / Волшебник</a></li>
-                                        <li><a href="?id=proffesion&type=mage&grage=highwizzard">2.1+) High Wizard / Архимаг</a></li>
-                                        <li><a href="?id=proffesion&type=mage&grage=warlock">3.1) Warlock / Чародей</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=wizzard">2.1) Wizzard / Волшебник</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=highwizzard">2.1+) High Wizard / Архимаг</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=warlock">3.1) Warlock / Чародей</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header">элементалисты</li>
-                                        <li><a href="?id=proffesion&type=mage&grage=sage">2.2) Sage / Мудрец</a></li>
-                                        <li><a href="?id=proffesion&type=mage&grage=professor">2.2+) Professor / Профессор</a></li>
-                                        <li><a href="?id=proffesion&type=mage&grage=sorcerer">3.2) Sorcerer / Шаман</a></li>
-                                        <li class="divider"></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=sage">2.2) Sage / Мудрец</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=professor">2.2+) Professor / Профессор</a></li>
+                                        <li class="menu-item"><a href="?id=proffesion&type=mage&grage=sorcerer">3.2) Sorcerer / Шаман</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item "><a href="?id=proffesion&type=acolyte">Лекари</a></li>
@@ -145,7 +151,7 @@
 					<ul class="breadcrumb">
 						<?php 
                             $index = 0;
-                            $last_crumb = count($this->breadcrumb) - 1;
+                            $last_crumb = count($this->breadcrumb) - 1; 
                         ?>
 						<?php foreach($this->breadcrumb as $href => $title) : ?>
 							<?php if(empty($index)): ?><!-- First crumb -->
