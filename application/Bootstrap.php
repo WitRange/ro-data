@@ -3,18 +3,17 @@
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
     public $_view;
-    public $_front;
 
     // ------------------------------------------------------------------------
     
-    /** Подключение хелперов созданных в папке application/views/helpers
+    /** Автоподгрузка модулей
      * 
      * @return Zend_Application_Module_Autoloader
      */
     function _initAutoload()
     {
         $autoloader = new Zend_Application_Module_Autoloader(array(
-            'namespace' => 'Application',
+            'namespace' => '',
             'basePath'  => APPLICATION_PATH,
         ));
         return $autoloader;
@@ -65,19 +64,25 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     // ------------------------------------------------------------------------
     
+    /** Инициализация перенаправлений на модули
+     *  дополнительно: подключение хелперов действия и хелперов вида
+     * 
+     * @return Zend_Controller_Router_Rewrite
+     */
     protected function _initRouter() {
     
         $front = Zend_Controller_Front::getInstance();
-
         $router = $front->getRouter();
+        $request =  new Zend_Controller_Request_Http();
 
         $router->addRoute(
             'index',
-            new Zend_Controller_Router_Route(':module/:controller/:action/:id', array('id'=>'0'))
+            new Zend_Controller_Router_Route(
+                ':module/:controller/:action/:id', 
+                array('id'=>'0')
+            )
         );
         
-        $request =  new Zend_Controller_Request_Http();
-
         $router->route($request);
         $this->_view->module     = $request->getModuleName();
         $this->_view->controller = $request->getControllerName();
@@ -96,6 +101,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Controller_Action_HelperBroker::addPath(
             APPLICATION_PATH . '/modules/'.$this->_view->module.'/controllers/helpers',
             ucfirst($this->_view->module).'_Controller_Helper_'
+        );
+        
+        Zend_Controller_Action_HelperBroker::addHelper(
+            new My_LayoutLoader()
         );
         
         return $router;

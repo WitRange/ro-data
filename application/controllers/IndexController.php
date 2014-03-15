@@ -3,7 +3,9 @@
 class IndexController extends Zend_Controller_Action
 {
 
-    public function indexAction() { 
+    public function indexAction() {
+        $modelWorld = new Model_World();
+        
         $this->view->id = $this->_getParam('id');
         
         $this->view->hello = $this->_helper->Hello->prepare("World");
