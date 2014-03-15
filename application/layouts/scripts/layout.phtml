@@ -138,7 +138,7 @@
 
         <div class="container theme-showcase" role="main">
             
-            <?php if ('index' == $this->controller): ?>
+            <?php if ('index' == $this->controller && 'default' == $this->module): ?>
             
                 <div class="jumbotron">
                     <h1>Мир РО</h1>
@@ -155,9 +155,9 @@
                         ?>
 						<?php foreach($this->breadcrumb as $href => $title) : ?>
 							<?php if(empty($index)): ?><!-- First crumb -->
-								<li> <a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><b><?php echo $title; ?></b></a></li>
+								<li><a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><b><?php echo $title; ?></b></a></li>
 							<?php elseif($index < $last_crumb) : ?>
-								<li> <a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><?php echo $title; ?></a></li>
+								<li><a href="http://<?php echo $_SERVER['SERVER_NAME'].'/'.$href; ?>"><?php echo $title; ?></a></li>
 							<?php else : ?>
 								<li class="active"><?php echo $title; ?></li>
 							<?php endif; ?>
