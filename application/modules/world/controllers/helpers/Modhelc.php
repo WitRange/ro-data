@@ -1,11 +1,11 @@
 <?php
 
-class Application_View_Helper_Alloha extends Zend_View_Helper_Abstract
+class World_Controller_Helper_Modhelc extends Zend_Controller_Action_Helper_Abstract
 {
     public function init() {}
-
-    public function alloha($param = '') {
-        $data = 'приложение/виды/хелперы/Alloha';
+    
+    public function prepare($param = '') {
+        $data = 'приложение/модули/World/контроллеры/хелперы/Modhelc';
         if ( ! empty($param)) {
             $return = $data . '#изменение: ' . $param . '!';
         } else {

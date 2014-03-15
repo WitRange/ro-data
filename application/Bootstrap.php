@@ -6,22 +6,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     // ------------------------------------------------------------------------
     
-    /** Подключение хелперов созданных в папке application/views/helpers
+    /** Автоподгрузка модулей
      * 
      * @return Zend_Application_Module_Autoloader
      */
     function _initAutoload()
     {
         $autoloader = new Zend_Application_Module_Autoloader(array(
-            'namespace' => 'Application',
+            'namespace' => '',
             'basePath'  => APPLICATION_PATH,
         ));
-    
-        Zend_Controller_Action_HelperBroker::addPath(
-            APPLICATION_PATH . '/controllers/helpers', 
-            'Application_Controller_Helper_'
-        );
-        
         return $autoloader;
     }
     
@@ -38,11 +32,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $this->bootstrap('view');
         $view = $layout->getView();
-
-        $view->addHelperPath(
-            APPLICATION_PATH . "/views/helpers", 
-            "Application_View_Helper_"
-        );
         
         $view->doctype('HTML5');
         
@@ -50,7 +39,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
             ->appendName('viewport', 'width=device-width, initial-scale=1');
-            
         
         $view->headTitle('RO Local');
         $view->headTitle()->setSeparator(' - ');
@@ -76,23 +64,48 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     // ------------------------------------------------------------------------
     
+    /** Инициализация перенаправлений на модули
+     *  дополнительно: подключение хелперов действия и хелперов вида
+     * 
+     * @return Zend_Controller_Router_Rewrite
+     */
     protected function _initRouter() {
     
         $front = Zend_Controller_Front::getInstance();
-
         $router = $front->getRouter();
+        $request =  new Zend_Controller_Request_Http();
 
         $router->addRoute(
             'index',
-            new Zend_Controller_Router_Route(':controller/:action/:id', array('id'=>'0'))
+            new Zend_Controller_Router_Route(
+                ':module/:controller/:action/:id', 
+                array('id'=>'0')
+            )
         );
         
-        $request =  new Zend_Controller_Request_Http();
-
         $router->route($request);
         $this->_view->module     = $request->getModuleName();
         $this->_view->controller = $request->getControllerName();
         $this->_view->action     = $request->getActionName();
+        
+        $this->_view->addHelperPath(
+            APPLICATION_PATH . "/views/helpers", 
+            "Application_View_Helper_"
+        );
+        
+        Zend_Controller_Action_HelperBroker::addPath(
+            APPLICATION_PATH . '/controllers/helpers', 
+            'Application_Controller_Helper_'
+        );
+        
+        Zend_Controller_Action_HelperBroker::addPath(
+            APPLICATION_PATH . '/modules/'.$this->_view->module.'/controllers/helpers',
+            ucfirst($this->_view->module).'_Controller_Helper_'
+        );
+        
+        Zend_Controller_Action_HelperBroker::addHelper(
+            new My_LayoutLoader()
+        );
         
         return $router;
     }
