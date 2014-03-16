@@ -1,0 +1,125 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+    
+        <?php $i = 0; ?>
+        
+        <?php //$maxDepth = $this->navigation()->menu()->getMaxDepth(); ?>
+        <?php //echo $this->navBarHorizontal($this->container, $maxDepth); ?>
+        <?php //die(__FILE__.'::'.__LINE__); ?>
+
+        <?php foreach ($this->container as $page): ?>
+        
+            <?php if ( ! $page->isVisible()) : ?>
+                    <?php continue; ?>
+            <?php endif; ?>
+            
+            <?php if( ! $i) : ?>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Показать меню</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->serverUrl() . $page->getHref(); ?>">
+                        <i class="icon icon-home icon-white"> </i> 
+                        <?php echo $page->getOrder(); ?> :: 
+                        <?php echo $page->label; ?>
+                    </a>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ($page->hasPages()) : ?>
+            
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    
+                    <ul class="nav navbar-nav">
+                    <?php foreach ($page as $subPage): ?>
+                    
+                        <?php if ( ! $subPage->isVisible()) : ?>
+                            <?php continue; ?>
+                        <?php endif; ?>
+                        
+                        <?php if( ! $subPage->hasPages()): ?>
+                        
+                            <li class="menu-item <?php echo $subPage->isActive(false) ? ' active' : '' ?>">
+                                <a href="<?php echo $this->serverUrl().$subPage->getHref(); ?>" class="<?php echo ($subPage->class ? $subPage->class : ''); ?>" >
+                                    <?php echo $subPage->label; ?>
+                                </a>
+                            </li>
+                            
+                        <?php else : ?>
+                        
+                            <li class="menu-item dropdown">
+                                
+                                <a href="<?php echo $this->serverUrl().$subPage->getHref(); ?>" class="dropdown-toggle" data-toggle="dropdown">
+                                    <?php echo $subPage->label; ?> <b class="caret"></b>
+                                </a>
+                                
+                                <ul class="dropdown-menu">
+                                <?php foreach($subPage as $subSubPage) : ?>
+                                    
+                                    <?php if ( ! $subSubPage->isVisible()) : ?>
+                                        <?php continue; ?>
+                                    <?php endif ?>
+                                    
+                                    <?php if( ! $subSubPage->hasPages()): ?>
+                                        
+                                        <li class="menu-item">
+                                            <a href="<?php echo $this->serverUrl().$subSubPage->getHref(); ?>">
+                                                <?php echo $subSubPage->label; ?>
+                                            </a>
+                                        </li>
+                                        
+                                    <?php else : ?>
+                                        <li class="menu-item dropdown dropdown-submenu">
+                                            
+                                            <a href="<?php echo $this->serverUrl().$subSubPage->getHref(); ?>" class="dropdown-toggle" data-toggle="dropdown">
+                                                <?php echo $subSubPage->label; ?>
+                                            </a>
+                                            
+                                            <ul class="dropdown-menu">
+                                                <?php foreach($subSubPage as $deepPage) : ?>
+                                                    
+                                                    <?php if ( ! $deepPage->isVisible()) : ?>
+                                                        <?php continue; ?>
+                                                    <?php endif ?>
+                                                    
+                                                    <li class="menu-item">
+                                                        <a href="<?php echo $this->serverUrl().$deepPage->getHref(); ?>">
+                                                            <?php echo $deepPage->label; ?>
+                                                        </a>
+                                                    </li>
+                                                    
+                                                <?php endforeach; ?>
+                                            </ul>
+                                            
+                                        </li>
+                                    <?php endif; ?>
+                                    
+                                <?php endforeach; ?>
+                                </ul>
+                                
+                            </li>
+                            
+                        <?php endif; ?>
+                        
+                    <?php endforeach; ?>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="navbar-search navbar-form" method="get" action="">
+                                <input class="form-control" placeholder="Search" name="s" type="text">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                
+            <?php endif; ?>
+            
+            <?php $i++; ?>
+            
+        <?php endforeach; ?>
+        
+    </div>
+</div>
