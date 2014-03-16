@@ -10,8 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      * 
      * @return Zend_Application_Module_Autoloader
      */
-    function _initAutoload()
-    {
+    function _initAutoload() {
         $autoloader = new Zend_Application_Module_Autoloader(array(
             'namespace' => '',
             'basePath'  => APPLICATION_PATH,
@@ -21,12 +20,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     
     // ------------------------------------------------------------------------
     
+    protected function _initNavigation() {
+        $config = new Zend_Config_Xml(APPLICATION_PATH.'/configs/navigation/navigation.xml','nav');
+        $container = new Zend_Navigation($config);
+        Zend_Registry::set('Zend_Navigation', $container);
+    }
+    
+    // ------------------------------------------------------------------------
+    
     /** Инициализация единого файла отображения
      * 
      * @return Zend_View
      */
-    function _initViewRes() 
-    {
+    function _initViewRes() {
         $this->bootstrap('layout');
         $layout = $this->getResource('layout');
 
@@ -58,8 +64,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ->appendFile('/js/holder/holder.js')
             ->appendFile('/js/tools.js');
         
-        $this->_view = $view;
-        return $this->_view;
+        return $view;
     }
 
     // ------------------------------------------------------------------------
@@ -72,9 +77,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initRouter() {
     
         $front = Zend_Controller_Front::getInstance();
+        $this->bootstrap('layout');
+        $layout = $this->getResource('layout');
+        
+        $this->bootstrap('view');
+        $view = $layout->getView();
+        
         $router = $front->getRouter();
-        $request =  new Zend_Controller_Request_Http();
-
         $router->addRoute(
             'index',
             new Zend_Controller_Router_Route(
@@ -83,12 +92,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             )
         );
         
+        $request =  new Zend_Controller_Request_Http();
         $router->route($request);
-        $this->_view->module     = $request->getModuleName();
-        $this->_view->controller = $request->getControllerName();
-        $this->_view->action     = $request->getActionName();
         
-        $this->_view->addHelperPath(
+        $view->module     = $request->getModuleName();
+        $view->controller = $request->getControllerName();
+        $view->action     = $request->getActionName();
+        
+        $view->addHelperPath(
             APPLICATION_PATH . "/views/helpers", 
             "Application_View_Helper_"
         );
@@ -99,8 +110,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
         
         Zend_Controller_Action_HelperBroker::addPath(
-            APPLICATION_PATH . '/modules/'.$this->_view->module.'/controllers/helpers',
-            ucfirst($this->_view->module).'_Controller_Helper_'
+            APPLICATION_PATH . '/modules/'.$view->module.'/controllers/helpers',
+            ucfirst($view->module).'_Controller_Helper_'
         );
         
         Zend_Controller_Action_HelperBroker::addHelper(

@@ -1,0 +1,45 @@
+<?php
+$breadcrumbs = array();
+if (null === $this->container) {
+    $this->container = $this->breadcrumbs()->getContainer();
+}
+if ( ! $active = $this->breadcrumbs()->findActive($this->container)) {
+    return '';
+}
+$currentLink = "";
+$active = $active['page'];
+if ($this->breadcrumbs()->getLinkLast()) {
+    $currentLink = $this->breadcrumbs()->htmlify($active);
+} else {
+    $currentLink = $active->getLabel();
+    if ($this->breadcrumbs()->getUseTranslator() && $t = $this->breadcrumbs()->getTranslator()) {
+        $currentLink = $t->translate($currentLink);
+    }
+    $currentLink = $this->escape($currentLink);
+}
+if( ! empty($currentLink)) {
+    $breadcrumbs[] = $currentLink;
+}
+while (($parent = $active->getParent()) != null) {
+    if ($parent instanceof Zend_Navigation_Page) {
+        array_unshift($breadcrumbs, $this->breadcrumbs()->htmlify($parent));
+    }
+    if ($parent === $this->container) {
+        break;
+    }
+    $active = $parent;
+}
+?>
+
+<?php if( ! empty($breadcrumbs)) : ?> 
+
+    <?php echo $this->breadcrumbs()->getIndent(); ?>
+    <ul class="breadcrumb">
+    
+        <?php foreach($breadcrumbs as $crumb) : ?>
+            <li><?php echo $crumb; ?></li>
+        <?php endforeach; ?>
+        
+    </ul>
+    
+<?php endif; ?>

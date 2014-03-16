@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <nav>
+        <home>
+            <label>Главная</label>
+            <module>default</module>
+            <controller>index</controller>
+            <action>index</action>
+            <pages>
+                <world>
+                    <label>Карта мира</label>
+                    <module>world</module>
+                    <controller>index</controller>
+                    <action>index</action>
+                    <pages>
+                        <location>
+                            <label>Локации</label>
+                            <module>world</module>
+                            <controller>location</controller>
+                            <action>index</action>
+                            <pages>
+                                <search>
+                                    <label>Поиск</label>
+                                    <module>world</module>
+                                    <controller>location</controller>
+                                    <action>search</action>
+                                </search>
+                                <view>
+                                    <label>Просмотр Локации</label>
+                                    <module>world</module>
+                                    <controller>location</controller>
+                                    <action>view</action>
+                                </view>
+                            </pages>
+                        </location>
+                    </pages>
+                </world>
+                <heroes>
+                    <label>Герои</label>
+                    <module>heroes</module>
+                    <controller>index</controller>
+                    <action>index</action>
+                    <pages>
+                        <job>
+                            <label>Профессии</label>
+                            <module>heroes</module>
+                            <controller>job</controller>
+                            <action>index</action>
+                            <pages>
+                                <search>
+                                    <label>Поиск</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>search</action>
+                                </search>
+                                <novice>
+                                    <label>Novice / Новичок</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>novice</action>
+                                    <pages>
+                                        <supernovice>
+                                            <label>1.1) Super Novice / Пиллигрим</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>novice</action>
+                                            <id>novice</id>
+                                        </supernovice>
+                                    </pages>
+                                </novice>
+                                <mage>
+                                    <label>Mage / Маг</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>mage</action>
+                                    <pages>
+                                        <wizzard>
+                                            <label>2.1) Wizzard / Волшебник</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>wizzard</id>
+                                            </params>
+                                        </wizzard>
+                                        <highwizzard>
+                                            <label>2.1+)  High Wizard / Архимаг</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>highwizzard</id>
+                                            </params>
+                                        </highwizzard>
+                                        <warlock>
+                                            <label>3.1) Warlock / Чародей</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>warlock</id>
+                                            </params>
+                                        </warlock>
+                                        <sage>
+                                            <label>2.2) Sage / Мудрец</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>sage</id>
+                                            </params>
+                                        </sage>
+                                        <professor>
+                                            <label>2.2+) Professor / Профессор</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>professor</id>
+                                            </params>
+                                        </professor>
+                                        <sorcerer>
+                                            <label>3.2) Sorcerer / Шаман</label>
+                                            <module>heroes</module>
+                                            <controller>job</controller>
+                                            <action>mage</action>
+                                            <params>
+                                                <id>sorcerer</id>
+                                            </params>
+                                        </sorcerer>
+                                    </pages>
+                                </mage>
+                                <acolyte>
+                                    <label>Acolyte / Послушник</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>acolyte</action>
+                                </acolyte>
+                                <swordman>
+                                    <label>Swordman / Мечник</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>swordman</action>
+                                </swordman>
+                                <archer>
+                                    <label>Archer / Лучник</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>archer</action>
+                                </archer>
+                                <thief>
+                                    <label>Thief / Вор</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>thief</action>
+                                </thief>
+                                <merchant>
+                                    <label>Merchant / Торговец</label>
+                                    <module>heroes</module>
+                                    <controller>job</controller>
+                                    <action>merchant</action>
+                                </merchant>
+                            </pages>
+                        </job>
+                    </pages>
+                </heroes>
+                <items>
+                    <label>Предметы</label>
+                    <module>items</module>
+                    <controller>index</controller>
+                    <action>index</action>
+                    <pages>
+                        <equipment>
+                            <label>Экипировка</label>
+                            <module>items</module>
+                            <controller>equipment</controller>
+                            <action>index</action>
+                            <pages>
+                                <search>
+                                    <label>Поиск</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>search</action>
+                                </search>
+                                <complect>
+                                    <label>Комплекты</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>set</action>
+                                </complect>
+                                <ammunition>
+                                    <label>Ammunition / Амуниция</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>ammunition</action>
+                                </ammunition>
+                                <weapon>
+                                    <label>Weapon / Оружие</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>weapon</action>
+                                </weapon>
+                                <shield>
+                                    <label>Shield / Щиты</label>
+                                    <uri>items/equipment/shield</uri>
+                                </shield>
+                                <armor>
+                                    <label>Armor / Броня</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>armor</action>
+                                </armor>
+                                <garment>
+                                    <label>Garment / Накидки</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>garment</action>
+                                </garment>
+                                <accessory>
+                                    <label>Accessory / Аксессуары</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>accessory</action>
+                                </accessory>
+                                <headgear>
+                                    <label>Headgear / Головные уборы</label>
+                                    <module>items</module>
+                                    <controller>equipment</controller>
+                                    <action>headgear</action>
+                                </headgear>
+                            </pages>
+                        </equipment>
+                        <cards>
+                            <label>Карты</label>
+                            <module>items</module>
+                            <controller>cards</controller>
+                            <action>index</action>
+                            <pages>
+                                <search>
+                                    <label>Поиск</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>search</action>
+                                </search>
+                                <complect>
+                                    <label>Комплекты</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>sets</action>
+                                </complect>
+                                <weapon>
+                                    <label>Карты в оружие</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>weapon</id>
+                                    </params>
+                                </weapon>
+                                <shields>
+                                    <label>Карты в щиты</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>shields</id>
+                                    </params>
+                                </shields>
+                                <armor>
+                                    <label>Карты в броню</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>armor</id>
+                                    </params>
+                                </armor>
+                                <garment>
+                                    <label>Карты в накидки</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>garment</id>
+                                    </params>
+                                </garment>
+                                <accessory>
+                                    <label>Карты в аксесуары</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>accessory</id>
+                                    </params>
+                                </accessory>
+                                <headgears>
+                                    <label>Карты в головные уборы</label>
+                                    <module>items</module>
+                                    <controller>cards</controller>
+                                    <action>slot</action>
+                                    <params>
+                                        <id>headgears</id>
+                                    </params>
+                                </headgears>
+                            </pages>
+                        </cards>
+                        <consumable>
+                            <label>Снадобья</label>
+                            <module>items</module>
+                            <controller>consumable</controller>
+                            <action>index</action>
+                        </consumable>
+                        <refinement>
+                            <label>Ресурсы</label>
+                            <module>items</module>
+                            <controller>refinement</controller>
+                            <action>index</action>
+                        </refinement>
+                        <loot>
+                            <label>Трофеи</label>
+                            <module>items</module>
+                            <controller>loot</controller>
+                            <action>index</action>
+                        </loot>
+                    </pages>
+                </items>
+                <creatures>
+                    <label>Обитатели</label>
+                    <module>creatures</module>
+                    <controller>index</controller>
+                    <action>index</action>
+                    <pages>
+                        <npc>
+                            <label>NPC / Персонажи</label>
+                            <module>creatures</module>
+                            <controller>npc</controller>
+                            <action>index</action>
+                        </npc>
+                        <mobs>
+                            <label>Mobs / Монстры</label>
+                            <module>creatures</module>
+                            <controller>mobs</controller>
+                            <action>index</action>
+                        </mobs>
+                    </pages>
+                </creatures>
+                <sitemap>
+                    <label>Карта сайта</label>
+                    <module>default</module>
+                    <controller>sitemap</controller>
+                    <action>index</action>
+                </sitemap>
+            </pages>
+        </home>
+    </nav>
+</config>

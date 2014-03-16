@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+ <nav>
+  <home>
+   <label>Админка</label>
+   <uri>/</uri>
+   <pages>
+     <world>
+       <label>Карта мира</label>
+       <uri>/world</uri>
+     </world>
+     <heroes>
+       <label>Герои</label>
+       <uri>/heroes</uri>
+     </heroes>
+     <items>
+       <label>Предметы</label>
+       <uri>/items</uri>
+     </items>
+     <creatures>
+       <label>Обитатели</label>
+       <uri>/creatures</uri>
+     </creatures>
+     <sitemap>
+       <label>Карта сайта</label>
+       <uri>/sitemap</uri>
+     </sitemap>
+   </pages>
+  </home>
+ </nav>
+</configdata>

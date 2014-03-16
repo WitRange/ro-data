@@ -29,6 +29,7 @@ class World_LocationController extends Zend_Controller_Action
      */
     public function viewAction() { 
         $this->view->id = $this->_getParam('id');
+        $this->view->qs = $this->_getParam('qs');
         $this->view->modhelc = $this->_helper->Modhelc->prepare("World");
         $this->view->hello = $this->_helper->Hello->prepare("World");
         
